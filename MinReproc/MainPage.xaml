@@ -1,20 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MinReproc.MainPage">
-    <MasterDetailPage.Master>
-        <ContentPage Title="Master">
-            <Label Text="Master" />
-        </ContentPage>
-    </MasterDetailPage.Master>
-
-    <MasterDetailPage.Detail>
-        <ContentPage x:Name="DetailCP">
-            <Button Text="Change Content" Pressed="Button_Pressed" />
-        </ContentPage>
-    </MasterDetailPage.Detail>
-
-</MasterDetailPage>
+    <ListView>
+        <ListView.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+                <x:String>Row1</x:String>
+                <x:String>Row2</x:String>
+            </x:Array>
+        </ListView.ItemsSource>
+        <ListView.Header>
+            <Grid>
+                <Label Text="Column 1" />
+                <Label Text="Column 2" Grid.Column="1"/>
+            </Grid>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Label Text="{Binding}" />
+                        <Label Text="Column 2" Grid.Column="1"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
